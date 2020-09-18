@@ -5,15 +5,17 @@
 #include <time.h>
 
 // some date functions
+#ifndef __MINGW32__
 struct timezone
 {
   int  tz_minuteswest; /* minutes W of Greenwich */
   int  tz_dsttime;     /* type of dst correction */
 };
+#endif
 
 // quick workaround in case this is included after event.h
 #ifndef _SYS_EVENT_H_
-#if defined(_MSC_VER) && (_MSC_VER >= 1910)
+#if defined(_MSC_VER) && (_MSC_VER >= 1910) || defined(__MINGW32__)
     #include <time.h>
 #else
     struct timespec {

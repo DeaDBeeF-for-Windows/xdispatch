@@ -40,6 +40,8 @@ static __thread struct event_buf iocp_buf;
 static DWORD event_buf_tls = 0;
 static int event_buf_tls_init = 0;
 
+void libkqueue_process_attach();
+
 
 // workaround for implicit TLS initialization
 // bug on Windows prior to Windows Vista
@@ -215,7 +217,7 @@ windows_kevent_wait(struct kqueue *kq, int no, const struct timespec *timeout)
         return (1);
     } else {
         if (GetLastError() == WAIT_TIMEOUT) {
-            dbg_printf("no events within the given timeout");
+           // dbg_printf("no events within the given timeout");
             return (0);
         }
         dbg_lasterror("GetQueuedCompletionStatus");

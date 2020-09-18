@@ -141,15 +141,15 @@ else()
 endif()
 
 # the xdispatch target
-mz_add_library(xdispatch libxdispatch)
+# mz_add_library(xdispatch libxdispatch)
 
 if(XDISPATCH_QT_SUPPORT)
-    mz_add_library(QtDispatch libqtdispatch)
+    # mz_add_library(QtDispatch libqtdispatch)
 endif()
 
 # custom test framework for xdispatch
 if(BUILD_XDISPATCH_TESTS)
-    mz_add_executable(tests tests)
+    # mz_add_executable(tests tests)
 endif()
 
 # documentation

@@ -8,10 +8,12 @@
 # pragma warning(disable : 4996)
 #endif
 
-#ifdef PROVIDE_LEGACY_XP_SUPPORT
+#ifndef __MINGW32__
+#ifdef PROVIDE_LEGACY_XP_SUPPORT 
 # define _WIN32_WINNT 0x0500
 #else
 # define _WIN32_WINNT 0x0610
+#endif
 #endif
 #define WIN32_LEAN_AND_MEAN
 

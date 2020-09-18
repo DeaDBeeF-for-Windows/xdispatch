@@ -46,11 +46,15 @@ extern char *KQUEUE_DEBUG_IDENT;
               KQUEUE_DEBUG_IDENT, THREAD_ID, __func__, str);               \
 } while (0)
 
+#ifdef __MINGW32__
+#define dbg_printf(fmt, ...) fprintf(stderr, fmt, __VA_ARGS__)
+#else
 #define dbg_printf(fmt,...)     do {                                \
     if (DEBUG_KQUEUE)                                                      \
       fprintf(stderr, "%s [%d]: %s(): "fmt"\n",                     \
               KQUEUE_DEBUG_IDENT, THREAD_ID, __func__, __VA_ARGS__);       \
 } while (0)
+#endif
 
 #define dbg_perror(str)         do {                                \
     if (DEBUG_KQUEUE)                                                      \
